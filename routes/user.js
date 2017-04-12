@@ -1,6 +1,7 @@
 var express = require('express'),
     fs = require('fs'),
     http = require('http'),
+    bcrypt = require('bcrypt-nodejs'),
     csv = require('csv'),
     mongoose = require('mongoose'),
     path = require('path');
@@ -124,7 +125,7 @@ exports.user = function(req, res) {
             }
             if (insert && Object.keys(userData).length) {
                 if (userData.engineerID !== undefined && userData.engineerID !== '') {
-                    //console.log('Inserting row:', insertData.users.engineerID );
+                    userData.password = bcrypt.hashSync('bridgeit', bcrypt.genSaltSync(8), null);
                     var objUser = {
                         'user': userData,
                         'personal': userPersonalData
@@ -161,7 +162,7 @@ exports.user = function(req, res) {
             });
             console.log('Number of lines in (FundooHRData - EnggPersonalData.csv): ' + count);
         });
-    stream1.pipe(csvStream1);
+    //stream1.pipe(csvStream1);
     res.send('Uploaded the User/Personal data');
 };
 
@@ -289,7 +290,7 @@ exports.profile = function(req, res) {
             });
             console.log('Number of lines in (FundooHRData - EnggProfile.csv) : ' + count);
         });
-    stream2.pipe(csvStream2);
+    //stream2.pipe(csvStream2);
     res.send('Uploaded the User Profile data');
 };
 
@@ -493,7 +494,7 @@ exports.hrdata = function(req, res) {
             });
             console.log('Number of lines in (FundooHRData - EnggHRData.csv): ' + count);
         });
-    stream3.pipe(csvStream3);
+    //stream3.pipe(csvStream3);
     res.send('Uploaded the User HR data');
 };
 exports.bank = function(req, res) {
@@ -623,7 +624,7 @@ exports.bank = function(req, res) {
             });
             console.log('Number of lines in (FundooHRData - EnggBankInfo.csv) : ' + count);
         });
-    stream4.pipe(csvStream4);
+    //stream4.pipe(csvStream4);
     res.send('Uploaded the User Bank data ');
 };
 exports.tracking = function(req, res) {
@@ -740,6 +741,6 @@ exports.tracking = function(req, res) {
             });
             console.log('Number of lines in (FundooHRData - EnggTrackingInfo.csv) : ' + count);
         });
-    stream5.pipe(csvStream5);
+    //stream5.pipe(csvStream5);
     res.send('Uploaded the User Tracking data ');
 };
