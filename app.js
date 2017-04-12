@@ -36,12 +36,12 @@ app.configure('development', function() {
     app.use(express.errorHandler());
 });
 
-app.get('/upload/', user.list);
-app.get('/upload/users', user.user);
-app.get('/upload/profile', user.profile);
-app.get('/upload/hrdata', user.hrdata);
-app.get('/upload/bank', user.bank);
-app.get('/upload/tracking', user.tracking);
+app.get('/import/', user.list);
+app.get('/import/users', user.user);
+app.get('/import/profile', user.profile);
+app.get('/import/hrdata', user.hrdata);
+app.get('/import/bank', user.bank);
+app.get('/import/tracking', user.tracking);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log("Express server listening on port " + app.get('port'));

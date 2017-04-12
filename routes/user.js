@@ -18,6 +18,7 @@ entries.personal = [];
 entries.HRDdata = [];
 entries.BankDetails = [];
 entries.TrackingDetails = [];
+var MongoURL = 'mongodb://localhost:27017/fundoohrtest1';
 
 exports.list = function(req, res) {
     res.send("FundooHR Import Users Data:</br><a href='users' target='_blank'>Users Data upload</a></br><a href='profile' target='_blank'>Users Profile upload</a></br><a href='hrdata' target='_blank'>Users HR Data upload</a></br><a href='bank' target='_blank'>Users bank upload</a></br><a href='tracking' target='_blank'>Users Tracking upload</a>");
@@ -133,7 +134,7 @@ exports.user = function(req, res) {
             };
         })
         .on('end', function(count) {
-            MongoClient.connect('mongodb://localhost:27017/fundoohrtest1', function(err, db) {
+            MongoClient.connect(MongoURL, function(err, db) {
                 var userCollection = db.collection("users");
                 var userPesrsonalCollection = db.collection("userpersonals");
                 var itemsProcessed = 0;
@@ -264,7 +265,7 @@ exports.profile = function(req, res) {
             };
         })
         .on('end', function(count) {
-            MongoClient.connect('mongodb://localhost:27017/fundoohrtest1', function(err, db) {
+            MongoClient.connect(MongoURL, function(err, db) {
                 var userCollection = db.collection("users");
                 var userPersonalCollection = db.collection("userprofiles");
                 entries.personal.forEach(function(userData, index, array) {
@@ -453,7 +454,7 @@ exports.hrdata = function(req, res) {
             };
         })
         .on('end', function(count) {
-            MongoClient.connect('mongodb://localhost:27017/fundoohrtest1', function(err, db) {
+            MongoClient.connect(MongoURL, function(err, db) {
                 var userCollection = db.collection("users");
                 var userHRDataCollection = db.collection("userhrdetails");
                 var itemsProcessed1 = 0;
@@ -593,7 +594,7 @@ exports.bank = function(req, res) {
             };
         })
         .on('end', function(count) {
-            MongoClient.connect('mongodb://localhost:27017/fundoohrtest1', function(err, db) {
+            MongoClient.connect(MongoURL, function(err, db) {
                 var userCollection = db.collection("users");
                 var userBankDetailsCollection = db.collection("userbankdetails");
                 var itemsProcessed1 = 0;
@@ -708,7 +709,7 @@ exports.tracking = function(req, res) {
             };
         })
         .on('end', function(count) {
-            MongoClient.connect('mongodb://localhost:27017/fundoohrtest1', function(err, db) {
+            MongoClient.connect(MongoURL, function(err, db) {
                 var userCollection = db.collection("users");
                 var userTrackingCollection = db.collection("usertrackings");
                 var itemsProcessed1 = 0;
