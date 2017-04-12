@@ -24,7 +24,7 @@ exports.list = function(req, res) {
     res.send("FundooHR Import Users Data:</br><a href='users' target='_blank'>Users Data upload</a></br><a href='profile' target='_blank'>Users Profile upload</a></br><a href='hrdata' target='_blank'>Users HR Data upload</a></br><a href='bank' target='_blank'>Users bank upload</a></br><a href='tracking' target='_blank'>Users Tracking upload</a>");
 };
 exports.user = function(req, res) {
-    var stream1 = fs.createReadStream(__dirname + '/upload/FundooHRData - EnggPersonalData.csv');
+    var stream1 = fs.createReadStream(__dirname + '/FundooHRData - EnggPersonalData.csv');
     var csvStream1 = csv()
         .from.stream(stream1, {
             columns: true
@@ -166,7 +166,7 @@ exports.user = function(req, res) {
 };
 
 exports.profile = function(req, res) {
-    var stream2 = fs.createReadStream(__dirname + '/upload/FundooHRData - EnggProfile.csv');
+    var stream2 = fs.createReadStream(__dirname + '/FundooHRData - EnggProfile.csv');
     var csvStream2 = csv()
         .from.stream(stream2, {
             columns: true
@@ -294,7 +294,7 @@ exports.profile = function(req, res) {
 };
 
 exports.hrdata = function(req, res) {
-    var stream3 = fs.createReadStream(__dirname + '/upload/FundooHRData - EnggHRData.csv');
+    var stream3 = fs.createReadStream(__dirname + '/FundooHRData - EnggHRData.csv');
     var csvStream3 = csv()
         .from.stream(stream3, {
             columns: true
@@ -497,7 +497,7 @@ exports.hrdata = function(req, res) {
     res.send('Uploaded the User HR data');
 };
 exports.bank = function(req, res) {
-    var stream4 = fs.createReadStream(__dirname + '/upload/FundooHRData - EnggBankInfo.csv');
+    var stream4 = fs.createReadStream(__dirname + '/FundooHRData - EnggBankInfo.csv');
     var csvStream4 = csv()
         .from.stream(stream4, {
             columns: true
@@ -627,7 +627,7 @@ exports.bank = function(req, res) {
     res.send('Uploaded the User Bank data ');
 };
 exports.tracking = function(req, res) {
-    var stream5 = fs.createReadStream(__dirname + '/upload/FundooHRData - EnggTrackingInfo.csv');
+    var stream5 = fs.createReadStream(__dirname + '/FundooHRData - EnggTrackingInfo.csv');
     var csvStream5 = csv()
         .from.stream(stream5, {
             columns: true
